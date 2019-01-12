@@ -11,15 +11,15 @@ import vert from './vert'
 import vorticity from './vorticity'
 
 export default {
-  advectionManualFiltering,
-  advection,
-  clear,
-  curl,
-  display,
-  divergence,
-  gradientSubtract,
-  pressure,
-  splat,
-  vert,
-  vorticity
+    advectionManualFiltering,
+    advection,
+    clear,
+    curl,
+    display,
+    divergence,
+    gradientSubtract,
+    pressure,
+    splat,
+    vert,
+    vorticity
 }
