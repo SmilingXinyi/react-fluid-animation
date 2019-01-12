@@ -37,9 +37,8 @@ export default class App extends Component {
 
 ## Todos
 
-- [ ] Props
-- [ ] Publish
-- [ ] Conf Doc
+- [ ] Props & Doc
+- [ ] NPM publish
 - [ ] deploy examples
 - [ ] check eslint
 
