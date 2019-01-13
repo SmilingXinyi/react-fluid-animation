@@ -34,13 +34,14 @@ export default class App extends Component {
 }
 
 ```
+- style: frame styles
 
-## Todos
 
-- [ ] Props & Doc
-- [ ] NPM publish
-- [ ] deploy examples
-- [ ] check eslint
+- noGesture: no gesture triggers and mouse events
+- duration: animation duration
+- done : end callback
+
+*It can be used as a load component when using these three configurations*
 
 ## Credits
 

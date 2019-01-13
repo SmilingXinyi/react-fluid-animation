@@ -54,7 +54,7 @@ export default class FluidAnimation {
         this.timing = Date.now()
         this._time = Date.now()
         this._timer = 0
-        this._endTime = 4
+        this._endTime = opts.duration || 0
     }
 
     get config() {
@@ -79,7 +79,7 @@ export default class FluidAnimation {
 
     addSplats(splats) {
         const newTime = parseFloat(((Date.now() - this.timing) / 1000).toFixed(2))
-        this._endTime = this._endTime + newTime
+        if (this._endTime) this._endTime = this._endTime + newTime
         this._splatStack.push(Array.isArray(splats) ? splats : [splats])
     }
 
@@ -352,7 +352,7 @@ export default class FluidAnimation {
         this._time = Date.now()
         this._timer += dt
 
-        if (this._timer > this._endTime) {
+        if (this._endTime && this._timer > this._endTime) {
             this._done()
         }
 

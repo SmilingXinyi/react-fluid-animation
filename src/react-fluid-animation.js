@@ -15,7 +15,10 @@ class ReactFluidAnimation extends Component {
         size: PropTypes.shape({
             width: PropTypes.number,
             height: PropTypes.number
-        })
+        }),
+        duration: PropTypes.number,
+        done: PropTypes.func,
+        noGesture: PropTypes.bool
     }
 
     static defaultProps = {
@@ -42,12 +45,6 @@ class ReactFluidAnimation extends Component {
         window.addEventListener('resize', this._onResize)
         this._reset(this.props)
         this._tick()
-
-        // setTimeout(() => {
-        //     this.setState({
-        //         running: false
-        //     })
-        // }, 1000)
     }
 
     componentWillUnmount () {
@@ -137,6 +134,7 @@ class ReactFluidAnimation extends Component {
         this.setState({
             running: false
         })
+        this.props.done && this.props.done()
     }
 
     _tick = () => {
@@ -165,7 +163,8 @@ class ReactFluidAnimation extends Component {
             canvas: this._canvas,
             content,
             config,
-            done: this._done.bind(this)
+            done: this._done.bind(this),
+            duration: this.props.duration
         })
 
 
