@@ -56,7 +56,7 @@ class ReactFluidAnimation extends Component {
     }
 
     render () {
-        const {content, config, animationRef, style, size, noEvent, ...rest} = this.props
+        const {content, config, animationRef, style, size, done, duration, noGesture, ...rest} = this.props
 
         return (
             <div style={{
@@ -70,12 +70,12 @@ class ReactFluidAnimation extends Component {
             >
                 <canvas
                     ref={this._canvasRef}
-                    onMouseDown={noEvent ? undefined : this._onMouseDown}
-                    onMouseMove={noEvent ? undefined : this._onMouseMove}
-                    onMouseUp={noEvent ? undefined : this._onMouseUp}
-                    onTouchStart={noEvent ? undefined : this._onTouchStart}
-                    onTouchMove={noEvent ? undefined : this._onTouchMove}
-                    onTouchEnd={noEvent ? undefined : this._onTouchEnd}
+                    onMouseDown={noGesture ? undefined : this._onMouseDown}
+                    onMouseMove={noGesture ? undefined : this._onMouseMove}
+                    onMouseUp={noGesture ? undefined : this._onMouseUp}
+                    onTouchStart={noGesture ? undefined : this._onTouchStart}
+                    onTouchMove={noGesture ? undefined : this._onTouchMove}
+                    onTouchEnd={noGesture ? undefined : this._onTouchEnd}
                     style={{
                         width: '100%',
                         height: '100%'
@@ -154,7 +154,8 @@ class ReactFluidAnimation extends Component {
         const {
             animationRef,
             content,
-            config
+            config,
+            duration
         } = props
 
         this._onResize()
@@ -163,16 +164,13 @@ class ReactFluidAnimation extends Component {
             canvas: this._canvas,
             content,
             config,
-            done: this._done.bind(this),
-            duration: this.props.duration
+            duration,
+            done: this._done.bind(this)
         })
 
 
         if (animationRef) {
             animationRef(this._animation)
-            // setTimeout(() => this._animation.addRandomSplats(25), 0)
-            // setTimeout(() => this._animation.addRandomSplats(25), 250)
-            // setTimeout(() => this._animation.addRandomSplats(25), 500)
         }
     }
 }
